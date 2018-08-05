@@ -6,15 +6,10 @@ import groovy.json.JsonSlurper
 class PT{
     def apiToken=''
 
-    PT(token){
-        apiToken = token
-        if(apiToken.equals('')){
-            withCredentials([string(credentialsId: 'pt_api_token', variable: 'pt_api_token')]) {
+    PT(script){
+           script.withCredentials([string(credentialsId: 'pt_api_token', variable: 'pt_api_token')]) {
                 apiToken = pt_api_token
             }
-        }else{
-            echo "${token}"
-        }
     }
 
     def getStories(script,pt_project_id,pt_state='',pt_label='',pt_update_after=''){
@@ -52,11 +47,11 @@ class PT{
 
         def json = new JsonSlurper().parseText(response.content)
         storyIds=json*.id
-        echo "storyIds: ${storyIds}"
+        //echo "storyIds: ${storyIds}"
         labels=json*.labels.name
-        echo "labels: ${labels}"
+        //echo "labels: ${labels}"
         branches=json*.branches.name
-        echo "branches: ${branches}"
+        //echo "branches: ${branches}"
         return [storyIds,labels,branches]
     }
 }
