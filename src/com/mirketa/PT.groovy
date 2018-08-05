@@ -13,7 +13,7 @@ class PT{
                 apiToken = pt_api_token
             }
         }else{
-            echo token
+            echo "${token}"
         }
     }
 
@@ -52,11 +52,11 @@ class PT{
 
         def json = new JsonSlurper().parseText(response.content)
         storyIds=json*.id
-        echo "storyIds: "+ storyIds
+        echo "storyIds: ${storyIds}"
         labels=json*.labels.name
-        echo "labels: "+labels
+        echo "labels: ${labels}"
         branches=json*.branches.name
-        echo "branches: "+branches
+        echo "branches: ${branches}"
         return [storyIds,labels,branches]
     }
 }
