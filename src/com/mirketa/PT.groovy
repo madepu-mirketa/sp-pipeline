@@ -8,7 +8,7 @@ class PT{
   	apiToken=token
   }
 
-  getToken(){
+  def getToken(){
   	println apiToken
   	return apiToken
   }
