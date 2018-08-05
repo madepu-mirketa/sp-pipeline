@@ -6,10 +6,8 @@ import groovy.json.JsonSlurper
 class PT{
     def apiToken=''
 
-    PT(script){
-           script.withCredentials([string(credentialsId: 'pt_api_token', variable: 'pt_api_token')]) {
-                apiToken = pt_api_token
-            }
+    PT(token){
+               apiToken = token
     }
 
     def getStories(script,pt_project_id,pt_state='',pt_label='',pt_update_after=''){
