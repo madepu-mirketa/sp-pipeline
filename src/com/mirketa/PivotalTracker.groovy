@@ -10,5 +10,3 @@ class PivotalTracker {
   	println apiToken
   }
 }
-
-return this
