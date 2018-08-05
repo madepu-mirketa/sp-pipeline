@@ -30,7 +30,6 @@ class PT{
             pt_state=pt_state.replaceAll(',',' OR state:')
             pt_state=pt_state.replaceFirst('^','state:')
             query=query+URLEncoder.encode(pt_state, "UTF-8").replaceAll('\\+','%20')
-            query=query+'&with_state='+pt_state
         }
         if(!pt_update_after.equals("")){
             pt_update_after=pt_update_after.replaceFirst('^','updated_after:')
