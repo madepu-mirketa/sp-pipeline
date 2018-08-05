@@ -29,11 +29,11 @@ class PT{
         if(!pt_state.equals("")){
             pt_state=pt_state.replaceAll(',',' OR state:')
             pt_state=pt_state.replaceFirst('^','state:')
-            query=query+URLEncoder.encode(pt_state, "UTF-8").replaceAll('\\+','%20')
+            query=query+URLEncoder.encode(pt_state, "UTF-8").replaceAll('\\+','%20') + '%20AND%20'
         }
         if(!pt_update_after.equals("")){
             pt_update_after=pt_update_after.replaceFirst('^','updated_after:')
-            query=query+URLEncoder.encode(pt_update_after, "UTF-8").replaceAll('\\+','%20')
+            query=query+URLEncoder.encode(pt_update_after, "UTF-8").replaceAll('\\+','%20') + '%20AND%20'
         }
         if(!pt_label.equals("")){
             pt_label=pt_label.replaceAll(',',' AND label:')
