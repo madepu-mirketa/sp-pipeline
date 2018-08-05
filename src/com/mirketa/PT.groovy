@@ -25,17 +25,21 @@ class PT{
 
         def storiesPath=String.format(storiesPathTemplate,pt_project_id)
 
-        def query='?fields=current_state%2Clabels%2Cbranches%2Ctasks&date_format=millis'
+        def query='?fields=current_state%2Clabels%2Cbranches%2Ctasks&date_format=millis&filter='
         if(!pt_state.equals("")){
+            pt_state=pt_state.replaceAll(',',' OR state:')
+            pt_state=pt_state.replaceFirst('^','state:')
+            query=query+URLEncoder.encode(pt_state, "UTF-8").replaceAll('\\+','%20')
             query=query+'&with_state='+pt_state
         }
         if(!pt_update_after.equals("")){
-            query=query+'&updated_after='+pt_update_after
+            pt_update_after=pt_update_after.replaceFirst('^','updated_after:')
+            query=query+URLEncoder.encode(pt_update_after, "UTF-8").replaceAll('\\+','%20')
         }
         if(!pt_label.equals("")){
             pt_label=pt_label.replaceAll(',',' AND label:')
             pt_label=pt_label.replaceFirst('^','label:')
-            query=query+'&filter='+java.net.URLEncoder.encode(pt_label, "UTF-8").replaceAll('\\+','%20')
+            query=query+URLEncoder.encode(pt_label, "UTF-8").replaceAll('\\+','%20')
         }
 
         def pt_url=base + storiesPath + query
