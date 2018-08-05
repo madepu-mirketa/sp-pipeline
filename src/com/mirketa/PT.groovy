@@ -1,7 +1,7 @@
 package com.mirketa;
 
 
-class PivotalTracker implements Serializable  {
+class PT implements Serializable  {
   def apiToken
   @NonCPS
   PivotalTracker(token){
