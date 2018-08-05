@@ -1,12 +1,12 @@
-package com.mirketa
+package com.mirketa;
 
 
 class PivotalTracker implements Serializable  {
   def apiToken
-  PivotalTracker(script,token){
+  PivotalTracker(token){
   	this.apiToken=token
   }
-  void getToken(script){
+  void getToken(){
   	println apiToken
   }
 }
