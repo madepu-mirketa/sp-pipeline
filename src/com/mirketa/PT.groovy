@@ -6,9 +6,14 @@ import groovy.json.JsonSlurper
 class PT{
     def apiToken=''
 
-    PT(){
-        withCredentials([string(credentialsId: 'pt_api_token', variable: 'pt_api_token')]) {
-            apiToken = pt_api_token
+    PT(token){
+        apiToken = token
+        if(apiToken.equals('')){
+            withCredentials([string(credentialsId: 'pt_api_token', variable: 'pt_api_token')]) {
+                apiToken = pt_api_token
+            }
+        }else{
+            println token
         }
     }
 
