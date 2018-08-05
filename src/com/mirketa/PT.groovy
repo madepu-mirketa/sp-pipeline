@@ -1,14 +1,15 @@
 package com.mirketa;
 
 
-class PT implements Serializable  {
+class PT{
   def apiToken
 
   PT(token){
-  	this.apiToken=token
+  	apiToken=token
   }
 
-  void getToken(){
+  getToken(){
   	println apiToken
+  	return apiToken
   }
 }
