@@ -1,5 +1,5 @@
 package com.mirketa;
-
+import java.net.URLEncoder
 import groovy.json.JsonSlurper
 
 
@@ -33,7 +33,9 @@ class PT{
             query=query+'&updated_after='+pt_update_after
         }
         if(!pt_label.equals("")){
-            query=query+'&with_label='+pt_label
+            pt_label=pt_label.replaceAll(',',' AND label:')
+            pt_label=pt_label.replaceFirst('^','label:')
+            query=query+'&filter='+java.net.URLEncoder.encode(pt_label, "UTF-8")
         }
 
         def pt_url=base + storiesPath + query
