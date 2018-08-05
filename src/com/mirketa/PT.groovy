@@ -13,13 +13,13 @@ class PT{
                 apiToken = pt_api_token
             }
         }else{
-            println token
+            echo token
         }
     }
 
     def getStories(script,pt_project_id,pt_state='',pt_label='',pt_update_after=''){
         if(apiToken.equals("")){
-            println "Please set Jenkins credentials with pt_api_token"
+            echo "Please set Jenkins credentials with pt_api_token"
             retun
         }
         def storyIds, labels, branches
@@ -52,11 +52,11 @@ class PT{
 
         def json = new JsonSlurper().parseText(response.content)
         storyIds=json*.id
-        println "storyIds: "+ storyIds
+        echo "storyIds: "+ storyIds
         labels=json*.labels.name
-        println "labels: "+labels
+        echo "labels: "+labels
         branches=json*.branches.name
-        println "branches: "+branches
+        echo "branches: "+branches
         return [storyIds,labels,branches]
     }
 }
