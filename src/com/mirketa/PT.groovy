@@ -35,7 +35,7 @@ class PT{
         if(!pt_label.equals("")){
             pt_label=pt_label.replaceAll(',',' AND label:')
             pt_label=pt_label.replaceFirst('^','label:')
-            query=query+'&filter='+java.net.URLEncoder.encode(pt_label, "UTF-8")
+            query=query+'&filter='+java.net.URLEncoder.encode(pt_label, "UTF-8").replaceAll('\\+','%20')
         }
 
         def pt_url=base + storiesPath + query
