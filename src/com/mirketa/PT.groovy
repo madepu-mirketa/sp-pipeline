@@ -17,7 +17,7 @@ class PT{
         }
     }
 
-    def getStories(pt_project_id,pt_state='',pt_label='',pt_update_after=''){
+    def getStories(script,pt_project_id,pt_state='',pt_label='',pt_update_after=''){
         if(apiToken.equals("")){
             println "Please set Jenkins credentials with pt_api_token"
             retun
@@ -46,7 +46,7 @@ class PT{
         def pt_url=base + storiesPath + query
         def headers=[maskValue: true, name: 'X-TrackerToken', value: apiToken]
 
-        def response = httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', customHeaders: [headers], responseHandle: 'LEAVE_OPEN', url: pt_url
+        def response = script.httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', customHeaders: [headers], responseHandle: 'LEAVE_OPEN', url: pt_url
         //println('Status: '+response.status)
         //println('Response: '+response.content)
 
